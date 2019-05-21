@@ -3,12 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Test.XamStorage"
              x:Class="Test.XamStorage.MainPage">
+   
+    <ContentPage.Resources>
+    <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="WidthRequest" Value="200" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="Android">0,10,0,0</On>
+                <On Platform="iOS">0,20,0,0</On>
+                <On Platform="UWP">0,60,0,0</On>
+            </OnPlatform>
+        </StackLayout.Padding>
+        
+        <Label Text="FileSystemTest" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
+        <Button Text="LocalStorage" Clicked="LocalstorageClicked" Style="{StaticResource buttonStyle}"/>
+        <Button Text="RoamingStorage" Clicked="RoamingStorageClicked" Style="{StaticResource buttonStyle}"/>
+        <Button Text="PersonalStorage" Clicked="PersonalStorageClicked" Style="{StaticResource buttonStyle}"/>
+        <Button Text="DocumentsFolderStorage" Clicked="DocumentsFolderStorageClicked" Style="{StaticResource buttonStyle}"/>
+        <Button Text="MusicFolderStorage" Clicked="MusicFolderStorageClicked" Style="{StaticResource buttonStyle}"/>
+        <Button Text="PicturesFolderStorage" Clicked="PicturesFolderStorageClicked" Style="{StaticResource buttonStyle}"/>
+        <Button Text="VideosFolderStorage" Clicked="VideosFolderStorageClicked" Style="{StaticResource buttonStyle}"/>
     </StackLayout>
 
 </ContentPage>
